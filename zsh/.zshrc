@@ -25,8 +25,7 @@ MichaelAquilina/zsh-autoswitch-virtualenv
 EOBUNDLES
  
 export PATH="$HOME/.cargo/bin:$PATH"
- 
-# Load the theme
+
 # Uncomment the line below if you want to use Spaceship theme
 #antigen theme mattmc3/zephyr
  
@@ -51,7 +50,14 @@ alias upg='sudo pacman -Syu'
 alias i='sudo pacman -S'
 alias c='clear'
 alias q='exit'
- 
+alias cd='z' 
 alias cat='bat'
 
 eval "$(starship init zsh)"
+
+#Custom command_not_found
+
+function command_not_found_handler() {
+	echo "HUH?? Command '$1'? I have no idea what that is."
+}
+

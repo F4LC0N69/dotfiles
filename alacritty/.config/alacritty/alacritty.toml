@@ -1,0 +1,79 @@
+[window]
+dimensions = { columns = 120, lines = 30 }
+padding = { x = 10, y = 10 }
+dynamic_title = true
+opacity = 0.7  # 70% transparency
+
+[font]
+normal = { family = "CaskaydiaCove Nerd Font Mono", style = "Regular" }
+bold = { family = "CaskaydiaCove Nerd Font Mono", style = "Bold" }
+italic = { family = "CaskaydiaCove Nerd Font Mono", style = "Italic" }
+size = 11.0
+offset = { x = 0, y = 0 }
+
+[colors]
+[colors.primary]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+[colors.cursor]
+text = "#1e1e2e"
+cursor = "#89b4fa"
+[colors.selection]
+text = "#1e1e2e"
+background = "#6c7086"
+
+[colors.normal]
+black = "#45475a"
+red = "#f38ba8"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+blue = "#89b4fa"
+magenta = "#cba6f7"
+cyan = "#94e2d5"
+white = "#bac2de"
+
+[colors.bright]
+black = "#585b70"
+red = "#f38ba8"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+blue = "#89b4fa"
+magenta = "#cba6f7"
+cyan = "#94e2d5"
+white = "#a6adc8"
+
+[colors.dim]
+black = "#313244"
+red = "#e64553"
+green = "#89dceb"
+yellow = "#f4e87b"
+blue = "#739efc"
+magenta = "#9c8ce8"
+cyan = "#74c4d6"
+white = "#9399b2"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[mouse]
+hide_when_typing = true
+
+[bell]
+animation = "None"
+
+[key_bindings]
+[[key_bindings]]
+key = "V"
+mods = ["Control", "Shift"]
+action = "Paste"
+
+[[key_bindings]]
+key = "C"
+mods = ["Control", "Shift"]
+action = "Copy"
+
+[[key_bindings]]
+key = "Q"
+mods = ["Control", "Shift"]
+action = "Quit"

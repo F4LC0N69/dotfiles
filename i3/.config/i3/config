@@ -1,0 +1,74 @@
+# i3 configuration file
+set $mod Mod4
+
+# Font
+font pango:CaskaydiaCove Nerd Font 11
+
+# Gaps (if using i3-gaps)
+gaps inner 10
+gaps outer 10
+
+# Colors - Catppuccin Mocha Palette
+set $background #1e1e2e
+set $foreground #cdd6f4
+set $black      #45475a
+set $red        #f38ba8
+set $green      #a6e3a1
+set $yellow     #f9e2af
+set $blue       #89b4fa
+set $magenta    #f5c2e7
+set $cyan       #94e2d5
+set $white      #bac2de
+
+# General settings
+set $term kitty
+set $browser firefox
+
+# Polybar
+exec_always --no-startup-id polybar --reload main
+
+# Window layout
+bindsym $mod+Return exec $term
+bindsym $mod+d exec rofi -show drun
+
+# Workspace bindings
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+
+# Floating windows
+for_window [class=".*"] border pixel 2
+
+# Borders
+new_window pixel 2
+new_float  pixel 2
+
+# Keybindings for window movement
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Split windows
+bindsym $mod+v split v
+bindsym $mod+Shift+h split h
+
+# Reload and exit
+bindsym $mod+Shift+r reload
+bindsym $mod+Shift+e exit
+
+# Shutdown i3
+bindsym $mod+q kill
+
+# Lock screen (adjust command as needed)
+bindsym $mod+Shift+l exec ~/.config/i3/lock.sh
+
+# Screenshot
+bindsym Print exec scrot ~/Pictures/Screenshot_%Y-%m-%d-%T.png
