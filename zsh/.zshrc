@@ -25,7 +25,7 @@ MichaelAquilina/zsh-autoswitch-virtualenv
 EOBUNDLES
  
 export PATH="$HOME/.cargo/bin:$PATH"
-
+export BAT_THEME="Catppuccin Mocha"
 # Uncomment the line below if you want to use Spaceship theme
 #antigen theme mattmc3/zephyr
  
@@ -52,6 +52,7 @@ alias c='clear'
 alias q='exit'
 alias cd='z' 
 alias cat='bat'
+alias v='nvim'
 
 eval "$(starship init zsh)"
 
