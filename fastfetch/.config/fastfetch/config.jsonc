@@ -1,8 +1,9 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo": {
+    "type": "kitty",
     "source": "$(find \"${XDG_CONFIG_HOME:-$HOME/.config}/fastfetch/pngs/\" -name \"*.png\" | sort -R | head -n 1)",
-    "height": 18
+    "height": 19
 },
 
   "display": {
@@ -63,7 +64,7 @@
     "break",
     {
       "type": "title",
-      "key": "  ",
+      "key": "  ",
       "format": "{6} {7} {8}"
     },
     {
