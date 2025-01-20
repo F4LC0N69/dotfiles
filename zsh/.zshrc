@@ -21,11 +21,11 @@ web-search
 Aloxaf/fzf-tab
 Tarrasch/zsh-autoenv
 zsh-bat
-MichaelAquilina/zsh-autoswitch-virtualenv
 EOBUNDLES
  
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.config/emacs/bin:$PATH"
 export BAT_THEME="Catppuccin Mocha"
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
@@ -48,20 +48,19 @@ alias ll='eza -lha --icons=auto --sort=name --group-directories-first'
 alias ls='eza -1 --icons=auto'
 alias lt='eza --icons=auto --tree'
 alias cls='clear'
-alias python='python3'
  
 # Add other useful aliases
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
-alias upd='sudo pacman -Syy'
-alias upg='sudo pacman -Syu'
-alias i='sudo pacman -S'
+alias upd='brew update'
+alias upg='brew upgrade'
+alias i='brew install'
 alias c='clear'
 alias q='exit'
 alias cd='z' 
 alias cat='bat'
 alias v='nvim'
 alias ff='fastfetch'
-
+alias rr='cargo run'
 eval "$(starship init zsh)"
 
 #Custom command_not_found
