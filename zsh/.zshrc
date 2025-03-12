@@ -23,9 +23,7 @@ Tarrasch/zsh-autoenv
 zsh-bat
 EOBUNDLES
  
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$HOME/.config/emacs/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 export BAT_THEME="Catppuccin Mocha"
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
@@ -33,6 +31,13 @@ export FZF_DEFAULT_OPTS=" \
 --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
 --color=selected-bg:#45475a \
 --multi"
+export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
+
+
+setopt autocd #Auto change directory when typing path
+setopt interactivecomments #Allow comments in interactive shell
+
+
 # Uncomment the line below if you want to use Spaceship theme
 #antigen theme mattmc3/zephyr
  
@@ -61,11 +66,57 @@ alias cat='bat'
 alias v='nvim'
 alias ff='fastfetch'
 alias rr='cargo run'
-eval "$(starship init zsh)"
+
+##I don't know what it does (Completion....... I guess??)
+autoload -U compinit
+compinit
 
 #Custom command_not_found
-
 function command_not_found_handler() {
-	echo "HUH?? Command '$1'? I have no idea what that is."
+    local cmd="$1"
+    local suggestion
+
+    # Try finding a close match using brew search
+    suggestion=$(brew search "$cmd" 2>/dev/null | head -n 1)
+
+    echo -e "\n\033[1;31m┌───────────────────────────────────────┐\033[0m"
+    echo -e "  \033[1;31m🚨 Oops! Command Not Found 🚨\033[0m"
+    echo -e "  \033[1;34m'$cmd'\033[0m? 🤔"
+
+    if [[ -n "$suggestion" && "$suggestion" != "$cmd" ]]; then
+        # Suggestion found
+        echo -e "  \033[1;32m💡 Did you mean:\033[0m \033[1;36m$suggestion\033[0m?"
+        echo -e "  Install it using: \033[1;33mbrew install $suggestion\033[0m"
+        echo -ne "  \033[1;35m👉 Install now? (Y/n): \033[0m"
+
+        # Read user input
+        read -r response
+        if [[ "$response" =~ ^[Yy]$ || -z "$response" ]]; then
+            echo -e "  \033[1;32m✨ Installing $suggestion... 🚀\033[0m"
+            brew install "$suggestion"
+        else
+            echo -e "  \033[1;31m❌ Skipping installation.\033[0m"
+        fi
+    elif [[ "$suggestion" == "$cmd" ]]; then
+        # Exact match found
+        echo -e "  \033[1;32m✨ Found exact match: \033[0m\033[1;36m$cmd\033[0m"
+        echo -e "  You can install it using: \033[1;33mbrew install $cmd\033[0m"
+        echo -ne "  \033[1;35m👉 Install now? (Y/n): \033[0m"
+
+        # Read user input
+        read -r response
+        if [[ "$response" =~ ^[Yy]$ || -z "$response" ]]; then
+            echo -e "  \033[1;32m✨ Installing $cmd... 🚀\033[0m"
+            brew install "$cmd"
+        else
+            echo -e "  \033[1;31m❌ Skipping installation.\033[0m"
+        fi
+    else
+        # No suggestions found
+        echo -e "  \033[1;33m🔍 No suggestions found.\033[0m"
+        echo -e "  Try searching manually with: \033[1;34mbrew search $cmd\033[0m"
+    fi
+
+    echo -e "\033[1;31m└───────────────────────────────────────┘\033[0m\n"
 }
 
