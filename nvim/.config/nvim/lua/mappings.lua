@@ -1,4 +1,4 @@
-require "nvchad.mappings"
+require("nvchad.mappings")
 
 -- add yours here
 
@@ -6,8 +6,47 @@ local map = vim.keymap.set
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
-map ("n", "<leader>ww", "<cmd> w <cr>")
-
 map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
-map("v", "<leader>sc", "<cmd> :Silicon <cr>")
+-- Nvim DAP
+map("n", "<Leader>dl", "<cmd>lua require'dap'.step_into()<CR>", { desc = "Debugger step into" })
+map("n", "<Leader>dj", "<cmd>lua require'dap'.step_over()<CR>", { desc = "Debugger step over" })
+map("n", "<Leader>dk", "<cmd>lua require'dap'.step_out()<CR>", { desc = "Debugger step out" })
+map("n", "<Leader>dc", "<cmd>lua require'dap'.continue()<CR>", { desc = "Debugger continue" })
+map("n", "<Leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", { desc = "Debugger toggle breakpoint" })
+map(
+	"n",
+	"<Leader>dd",
+	"<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
+	{ desc = "Debugger set conditional breakpoint" }
+)
+map("n", "<Leader>de", "<cmd>lua require'dap'.terminate()<CR>", { desc = "Debugger reset" })
+map("n", "<Leader>dr", "<cmd>lua require'dap'.run_last()<CR>", { desc = "Debugger run last" })
+
+-- rustaceanvim
+map("n", "<Leader>dt", "<cmd>lua vim.cmd('RustLsp testables')<CR>", { desc = "Debugger testables" })
+
+--toggle transparency
+map(
+	"n",
+	"<leader>tt",
+	":lua require('base46').toggle_transparency()<CR>",
+	{ noremap = true, silent = true, desc = "Toggle Background Transparency" }
+)
+map("n", "<leader>cc", function()
+	require("nvchad.term").runner({
+		id = "float_term",
+		pos = "float",
+		cmd = function()
+			local file = vim.fn.expand("%")
+			local ft_cmds = {
+				python = "python3 " .. file,
+				cpp = "clear && g++ -o out " .. file .. "&& ./out",
+				c = "clear && gcc -o out " .. file .. "&& ./out",
+				go = "go run " .. file,
+				rust = "clear && cargo run",
+			}
+			return ft_cmds[vim.bo.ft]
+		end,
+	})
+end, { noremap = true, silent = true })

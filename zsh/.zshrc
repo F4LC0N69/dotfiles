@@ -1,4 +1,4 @@
-# Check if Antigen is installed, if not, install it
+#Check if Antigen is installed, if not, install it
 if [ ! -d "$HOME/.antigen" ]; then
     echo "Antigen not found. Installing..."
     git clone https://github.com/zsh-users/antigen.git $HOME/.antigen
@@ -21,6 +21,7 @@ web-search
 Aloxaf/fzf-tab
 Tarrasch/zsh-autoenv
 zsh-bat
+ziglang/shell-completions
 EOBUNDLES
  
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
@@ -38,6 +39,7 @@ setopt autocd #Auto change directory when typing path
 setopt interactivecomments #Allow comments in interactive shell
 
 
+fpath+="$HOME/dotfiles/completions"
 # Uncomment the line below if you want to use Spaceship theme
 #antigen theme mattmc3/zephyr
  
@@ -68,8 +70,13 @@ alias ff='fastfetch'
 alias rr='cargo run'
 
 ##I don't know what it does (Completion....... I guess??)
-autoload -U compinit
-compinit
+autoload -Uz compinit && compinit
+
+
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
 
 #Custom command_not_found
 function command_not_found_handler() {
@@ -119,4 +126,19 @@ function command_not_found_handler() {
 
     echo -e "\033[1;31m└───────────────────────────────────────┘\033[0m\n"
 }
+
+
+# bun completions
+[ -s "/Users/saxam/.bun/_bun" ] && source "/Users/saxam/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+#other completions
+# if [ -d "$HOME/dotfiles/completions" ]; then
+#   for f in "$HOME/dotfiles/completions/*"; do
+#     [ -f "$f" ] && source "$f"
+#   done
+#
+# fi
 
