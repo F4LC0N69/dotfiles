@@ -20,7 +20,9 @@ apt install stow
 ```
 
 ### Clone this repo
-```git clone https://github.com/F4LC0N69/dotfiles.git && cd dotfiles```
+```bash
+git clone https://github.com/F4LC0N69/dotfiles.git && cd dotfiles
+```
 
 
 ### Simply stow the files you need or copy them if you want to. Eg:-
