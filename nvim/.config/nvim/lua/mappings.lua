@@ -33,20 +33,8 @@ map(
 	":lua require('base46').toggle_transparency()<CR>",
 	{ noremap = true, silent = true, desc = "Toggle Background Transparency" }
 )
-map("n", "<leader>cc", function()
-	require("nvchad.term").runner({
-		id = "float_term",
-		pos = "float",
-		cmd = function()
-			local file = vim.fn.expand("%")
-			local ft_cmds = {
-				python = "python3 " .. file,
-				cpp = "clear && g++ -o out " .. file .. "&& ./out",
-				c = "clear && gcc -o out " .. file .. "&& ./out",
-				go = "go run " .. file,
-				rust = "clear && cargo run",
-			}
-			return ft_cmds[vim.bo.ft]
-		end,
-	})
-end, { noremap = true, silent = true })
+
+local coderunner = require("configs.coderunner")
+map("n", "<F5>", coderunner.run_code, { noremap = true, silent = true, desc = "Run Code" })
+map("n", "\\", coderunner.run_code, { noremap = true, silent = true, desc = "Run Code" })
+map("n", "<leader>cc", coderunner.run_code, { noremap = true, silent = true, desc = "Run Code" })

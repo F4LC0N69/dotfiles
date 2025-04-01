@@ -25,7 +25,7 @@ shift + alt - 9 : yabai -m window --space 9;
 shift + alt - 0 : yabai -m window --space 10;
 
 #NOTE:Open applications
-cmd - return : open -a WezTerm
-cmd - b : open -a FireFox
+cmd - return : open -a kitty
+cmd - b : open -a Vivaldi 
 cmd - k : open -a VSCodium
-cmd - s : open -a Spotify
+cmd - m : open -a Spotify

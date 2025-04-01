@@ -1,0 +1,9 @@
+theme = "dark"
+
+[font]
+normal = ["CaskaydiaCove Nerd Font"]
+size = 18
+hinting = "full"
+
+[window]
+transparency = 0.8

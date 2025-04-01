@@ -24,7 +24,7 @@ zsh-bat
 ziglang/shell-completions
 EOBUNDLES
  
-export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:/opt/homebrew/opt/openjdk/bin:$PATH"
 export BAT_THEME="Catppuccin Mocha"
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
@@ -33,7 +33,7 @@ export FZF_DEFAULT_OPTS=" \
 --color=selected-bg:#45475a \
 --multi"
 export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
-
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 
 setopt autocd #Auto change directory when typing path
 setopt interactivecomments #Allow comments in interactive shell
@@ -66,9 +66,8 @@ alias q='exit'
 alias cd='z' 
 alias cat='bat'
 alias v='nvim'
-alias ff='fastfetch'
 alias rr='cargo run'
-
+alias ff='nvim $(fzf --preview="bat --theme=Catppuccin\ Mocha --color=always {}")'
 ##I don't know what it does (Completion....... I guess??)
 autoload -Uz compinit && compinit
 
@@ -134,11 +133,4 @@ function command_not_found_handler() {
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-#other completions
-# if [ -d "$HOME/dotfiles/completions" ]; then
-#   for f in "$HOME/dotfiles/completions/*"; do
-#     [ -f "$f" ] && source "$f"
-#   done
-#
-# fi
 
