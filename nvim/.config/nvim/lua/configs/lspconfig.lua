@@ -7,7 +7,7 @@ local lspconfig = require("lspconfig")
 --local util = require "lspconfig/util"
 
 -- EXAMPLE
-local servers = { "html", "cssls", "ts_ls", "clangd", "zls", "pyright" }
+local servers = { "html", "cssls", "ts_ls", "clangd", "zls", "pyright", "asm_lsp" }
 local nvlsp = require("nvchad.configs.lspconfig")
 
 -- lsps with default config

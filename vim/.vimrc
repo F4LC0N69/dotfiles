@@ -7,7 +7,7 @@ endif
 
 " Set leader key to space (like Neovim)
 let mapleader=" "
-
+set rtp+=/opt/homebrew/opt/fzf
 " Basic settings
 set number            " Show line numbers
 set relativenumber    " Relative line numbers

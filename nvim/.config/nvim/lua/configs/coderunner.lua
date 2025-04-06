@@ -11,6 +11,7 @@ M.run_code = function()
 			local dir = vim.fn.fnamemodify(file, ":h")
 			local ft_cmds = {
 				python = "python3 " .. file,
+				lua = "lua " .. file,
 				cpp = "clear && g++ -o out " .. file .. "&& ./out",
 				c = "clear && gcc -o out " .. file .. "&& ./out",
 				go = "go run " .. file,
