@@ -133,4 +133,5 @@ function command_not_found_handler() {
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
+# pokemon-colorscripts on terminal startup
+pokemon-colorscripts -r --no-title
