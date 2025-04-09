@@ -64,7 +64,7 @@
     },
     "custom/power": {
         "tooltip": false,
-        //"on-click": "wlogout &",
+        "on-click": "sh -c 'sleep 0.5s; $HOME/dotfiles/scripts/powermenu.sh'",
         "format": "󰍃"
     }
 }
