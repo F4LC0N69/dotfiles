@@ -36,7 +36,7 @@ map(
 
 local coderunner = require("configs.coderunner")
 map("n", "<F5>", coderunner.run_code, { noremap = true, silent = true, desc = "Run Code" })
-map({ "n", "t" }, "\\", coderunner.run_code, { noremap = true, silent = true, desc = "Run Code" })
+map("n", "\\", coderunner.run_code, { noremap = true, silent = true, desc = "Run Code" })
 
 map({ "n", "t" }, "<F3>", function()
 	require("nvchad.term").toggle({ pos = "float", id = "floatTerm" })

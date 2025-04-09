@@ -76,57 +76,6 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-
-#Custom command_not_found
-function command_not_found_handler() {
-    local cmd="$1"
-    local suggestion
-
-    # Try finding a close match using brew search
-    suggestion=$(brew search "$cmd" 2>/dev/null | head -n 1)
-
-    echo -e "\n\033[1;31m┌───────────────────────────────────────┐\033[0m"
-    echo -e "  \033[1;31m🚨 Oops! Command Not Found 🚨\033[0m"
-    echo -e "  \033[1;34m'$cmd'\033[0m? 🤔"
-
-    if [[ -n "$suggestion" && "$suggestion" != "$cmd" ]]; then
-        # Suggestion found
-        echo -e "  \033[1;32m💡 Did you mean:\033[0m \033[1;36m$suggestion\033[0m?"
-        echo -e "  Install it using: \033[1;33mbrew install $suggestion\033[0m"
-        echo -ne "  \033[1;35m👉 Install now? (Y/n): \033[0m"
-
-        # Read user input
-        read -r response
-        if [[ "$response" =~ ^[Yy]$ || -z "$response" ]]; then
-            echo -e "  \033[1;32m✨ Installing $suggestion... 🚀\033[0m"
-            brew install "$suggestion"
-        else
-            echo -e "  \033[1;31m❌ Skipping installation.\033[0m"
-        fi
-    elif [[ "$suggestion" == "$cmd" ]]; then
-        # Exact match found
-        echo -e "  \033[1;32m✨ Found exact match: \033[0m\033[1;36m$cmd\033[0m"
-        echo -e "  You can install it using: \033[1;33mbrew install $cmd\033[0m"
-        echo -ne "  \033[1;35m👉 Install now? (Y/n): \033[0m"
-
-        # Read user input
-        read -r response
-        if [[ "$response" =~ ^[Yy]$ || -z "$response" ]]; then
-            echo -e "  \033[1;32m✨ Installing $cmd... 🚀\033[0m"
-            brew install "$cmd"
-        else
-            echo -e "  \033[1;31m❌ Skipping installation.\033[0m"
-        fi
-    else
-        # No suggestions found
-        echo -e "  \033[1;33m🔍 No suggestions found.\033[0m"
-        echo -e "  Try searching manually with: \033[1;34mbrew search $cmd\033[0m"
-    fi
-
-    echo -e "\033[1;31m└───────────────────────────────────────┘\033[0m\n"
-}
-
-
 # bun completions
 [ -s "/Users/saxam/.bun/_bun" ] && source "/Users/saxam/.bun/_bun"
 
@@ -134,4 +83,6 @@ function command_not_found_handler() {
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 # pokemon-colorscripts on terminal startup
+if [[ -o interactive ]] && [[ -z "$NVIM" ]] && [[ $TERM_PROGRAM != "vscode" ]]; then
 pokemon-colorscripts -r --no-title
+fi
