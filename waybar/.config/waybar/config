@@ -64,7 +64,7 @@
     },
     "custom/power": {
         "tooltip": false,
-        "on-click": "sh -c 'sleep 0.5s; $HOME/dotfiles/scripts/powermenu.sh'",
+        "on-click": "sh -c 'sleep 0.5s; hyprctl dispatch exit'",
         "format": "󰍃"
     }
 }
