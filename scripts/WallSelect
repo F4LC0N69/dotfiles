@@ -109,4 +109,5 @@ wall_selection=$(find "${wall_dir}" -type f \( -iname "*.jpg" -o -iname "*.jpeg"
     done | $rofi_command)
 
 # Set wallpaper
-[[ -n "$wall_selection" ]] && swww img "${wall_dir}/${wall_selection}" --transition-type any --transition-fps 60
+[[ -n "$wall_selection" ]] && swww img "${wall_dir}/${wall_selection}" --transition-type any --transition-fps 60 \
+  && ln -sf "${wall_dir}/${wall_selection}" ~/wallpaper
