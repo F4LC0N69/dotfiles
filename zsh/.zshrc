@@ -68,6 +68,7 @@ alias cat='bat'
 alias v='nvim'
 alias rr='cargo run'
 alias ff='nvim $(fzf --preview="bat --theme=Catppuccin\ Mocha --color=always {}")'
+alias icat='kitty +kitten icat'
 ##I don't know what it does (Completion....... I guess??)
 autoload -Uz compinit && compinit
 

@@ -20,7 +20,7 @@ yabai -m config mouse_action2 resize
 yabai -m config mouse_drop_action swap
 
 # Do not manage some apps which are not resizable
-yabai -m rule --add app="^(LuLu|Vimac|Calculator|VLC|System Preferences|zoom.us|Photo Booth|Archive Utility|Python|LibreOffice)$" manage=off
+yabai -m rule --add app="^(LuLu|Vimac|Calculator|VLC|System Preferences|zoom.us|Photo Booth|Archive Utility|Python|LibreOffice|Messenger)$" manage=off
 
 # ===== Rules ==================================
 

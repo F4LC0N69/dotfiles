@@ -1,0 +1,7 @@
+--target=~
+--ignore=\.DS_Store
+--ignore=.*\.swp$
+--ignore=.*\.swo$
+--ignore=.*\.bak$
+--ignore=.*\.tmp$
+--verbose
