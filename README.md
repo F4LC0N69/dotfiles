@@ -33,4 +33,4 @@ stow zsh
 
 
 ```
-
+Read wallpaper script once
