@@ -1,7 +1,19 @@
 [global]
 frame_color = "#89b4fa"
+frame_width = 2
 separator_color= frame
 highlight = "#89b4fa"
+width = (0, 400)
+height = 300
+origin = top-right
+offset = 0x25
+transparency = 20
+padding = 12
+horizontal_padding = 14
+text_icon_padding = 20
+font = JetBrains Nerd Font 10
+format = "<b>%a\n%s</b>\n%b"
+icon_path=/usr/share/icons/Adwaita/
 
 [urgency_low]
 background = "#1e1e2e"

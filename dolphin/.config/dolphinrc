@@ -3,6 +3,14 @@ MenuBar=Disabled
 [$Version]
 update_info=dolphin_detailsmodesettings.upd:rename-leading-padding
 
+[CompactMode]
+UseSystemFont=false
+ViewFont=JetBrainsMonoNL NFM,14,-1,5,600,0,0,0,0,0,0,0,0,0,0,1,Regular
+
+[ExtractDialog]
+2048x1280 screen: Window-Maximized=true
+DirHistory[$e]=$HOME/ROMS/PSP/
+
 [General]
 ShowSelectionToggle=false
 ShowStatusBar=false
@@ -10,8 +18,10 @@ Version=202
 ViewPropsTimestamp=2023,4,26,16,58,48.324
 
 [IconsMode]
+IconSize=48
 MaximumTextLines=1
-PreviewSize=112
+PreviewSize=208
+UseSystemFont=false
 
 [InformationPanel]
 dateFormat=ShortFormat

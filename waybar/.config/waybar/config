@@ -21,7 +21,7 @@
     "custom/music": {
         "format": "  {}",
         "escape": true,
-        "interval": 5,
+        "interval": 1,
         "tooltip": false,
         "exec": "playerctl metadata --format='{{ title }}'",
         "on-click": "playerctl play-pause",
@@ -44,10 +44,10 @@
             "critical": 15
         },
         "format": "{icon}",
-        "format-charging": "",
-        "format-plugged": "",
+        "format-charging": "󰂄",
+        "format-plugged": "",
         "format-alt": "{icon}",
-        "format-icons": ["", "",  "", "", "", "", "", "", "", "", "", ""]
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", ""]
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
@@ -64,7 +64,7 @@
     },
     "custom/power": {
         "tooltip": false,
-        "on-click": "sh -c 'sleep 0.5s; hyprctl dispatch exit'",
+        "on-click": "sh -c 'wlogout'",
         "format": "󰍃"
     }
 }
