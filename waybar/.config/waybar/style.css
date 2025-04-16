@@ -2,7 +2,7 @@
 
 * {
   font-family: FantasqueSansMono Nerd Font;
-  font-size: 16px;
+  font-size: 19px;
   min-height: 0;
 }
 
@@ -100,4 +100,10 @@
 #tray {
   margin-right: 1rem;
   border-radius: 1rem;
+}
+#custom-notification {
+  margin-right: 1rem;
+  border-radius: 1rem 0px 0px 1rem;
+  color: @blue;
+  padding: 0 10px;
 }

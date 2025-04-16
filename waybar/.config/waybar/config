@@ -5,7 +5,7 @@
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["custom/music"],
-    "modules-right": ["pulseaudio", "backlight", "battery", "clock", "tray", "custom/lock", "custom/power"],
+    "modules-right": ["pulseaudio", "backlight", "battery", "clock", "tray", "custom/notification", "custom/lock", "custom/power"],
     "hyprland/workspaces": {
          "disable-scroll": true,
          "sort-by-name": true,
@@ -56,6 +56,22 @@
         "format-icons": {
             "default": ["", "", " "]
         },
+    },
+     "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+          "notification": "󰂚",
+          "none": "",
+          "dnd-notification": "󰂛",
+          "dnd-none": "󰂛"
+        },
+        "return-type": "json",
+        // "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
     },
     "custom/lock": {
         "tooltip": false,
