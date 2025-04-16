@@ -102,8 +102,10 @@
   border-radius: 1rem;
 }
 #custom-notification {
-  margin-right: 1rem;
-  border-radius: 1rem 0px 0px 1rem;
-  color: @blue;
+  background: @surface0;
+  border-radius: 1rem;
+  color: @lavender;
   padding: 0 10px;
+  margin-right: 1rem;
+  min-height: 24px;
 }
