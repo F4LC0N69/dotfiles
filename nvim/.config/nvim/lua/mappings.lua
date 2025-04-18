@@ -33,6 +33,10 @@ map(
 	":lua require('base46').toggle_transparency()<CR>",
 	{ noremap = true, silent = true, desc = "Toggle Background Transparency" }
 )
+--python shit
+map("n", "<leader>dpr", function()
+	require("dap-python").test_method()
+end, { desc = "Debug python run" })
 
 local coderunner = require("configs.coderunner")
 map("n", "<F5>", coderunner.run_code, { noremap = true, silent = true, desc = "Run Code" })

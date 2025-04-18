@@ -45,8 +45,11 @@ fpath+="$HOME/dotfiles/completions"
  
 # Tell antigen that you're done
 antigen apply
+
+
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+eval "$(uv generate-shell-completion zsh)"
 source <(fzf --zsh)
 # Set aliases
 alias l='eza -lh --icons=auto'

@@ -5,7 +5,7 @@ M.run_code = function()
 
 	require("nvchad.term").toggle({
 		id = "floatTerm",
-		pos = "float",
+		pos = "sp",
 		cmd = function()
 			local file = vim.fn.expand("%")
 			local dir = vim.fn.fnamemodify(file, ":h")

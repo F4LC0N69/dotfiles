@@ -32,6 +32,7 @@ return {
 				"shellcheck",
 				"ruff",
 				"mypy",
+				"debugpy",
 			},
 		},
 	},

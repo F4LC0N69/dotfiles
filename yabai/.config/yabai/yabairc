@@ -20,7 +20,7 @@ yabai -m config mouse_action2 resize
 yabai -m config mouse_drop_action swap
 
 # Do not manage some apps which are not resizable
-yabai -m rule --add app="^(LuLu|Vimac|Calculator|VLC|System Preferences|zoom.us|Photo Booth|Archive Utility|Python|LibreOffice|Messenger)$" manage=off
+yabai -m rule --add app="^(LuLu|Vimac|Calculator|VLC|System Preferences|zoom.us|Photo Booth|Archive Utility|Python|python3|LibreOffice|Messenger|pygame window)$" manage=off
 
 # ===== Rules ==================================
 
@@ -39,4 +39,4 @@ yabai -m rule --add label="Software Update" title="Software Update" manage=off
 yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
 yabai -m rule --add label="Select file to save to" app="^Inkscape$" title="Select file to save to" manage=off
 yabai -m rule --add label="IINA" app="IINA" title=".*" manage=off
-
+yabai -m rule --add label="Pygame Windows" app="^python3" title=".*pygame.*" manage=off
