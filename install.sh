@@ -7,7 +7,7 @@ CYAN='\033[0;36m'
 NC='\033[0m'
 
 # Non-stow folders
-SKIP_DIRS=("scripts" "wallpapers")
+SKIP_DIRS=("scripts" "wallpapers" "brew")
 
 echo -e "${CYAN}Starting dotfiles stow process...${NC}"
 
