@@ -40,3 +40,4 @@ yabai -m rule --add label="About This Mac" app="System Information" title="About
 yabai -m rule --add label="Select file to save to" app="^Inkscape$" title="Select file to save to" manage=off
 yabai -m rule --add label="IINA" app="IINA" title=".*" manage=off
 yabai -m rule --add label="Pygame Windows" app="^python3" title=".*pygame.*" manage=off
+yabai -m rule --add label="Love2D Windows" app="^love" title=".*" manage=off
