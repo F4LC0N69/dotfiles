@@ -1,57 +1,72 @@
-#Check if Antigen is installed, if not, install it
-if [ ! -d "$HOME/.antigen" ]; then
-    echo "Antigen not found. Installing..."
-    git clone https://github.com/zsh-users/antigen.git $HOME/.antigen
+if [[ -f "/opt/homebrew/bin/brew" ]] then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
- 
-source $HOME/.antigen/antigen.zsh
- 
-# Load oh-my-zsh's library
-antigen use oh-my-zsh
- 
-antigen bundles <<EOBUNDLES
-zsh-users/zsh-syntax-highlighting
-zsh-users/zsh-autosuggestions
-zsh-users/zsh-completions
-zsh-users/zsh-history-substring-search
-sudo
-copyfile
-zoxide
-web-search
-Aloxaf/fzf-tab
-Tarrasch/zsh-autoenv
-zsh-bat
-ziglang/shell-completions
-EOBUNDLES
- 
-export PATH="$HOME/.local/bin:$HOME/.cargo/bin:/opt/homebrew/opt/openjdk/bin:$PATH"
-export BAT_THEME="Catppuccin Mocha"
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
---color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
---color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
---color=selected-bg:#45475a \
---multi"
-export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
-export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 
-setopt autocd #Auto change directory when typing path
-setopt interactivecomments #Allow comments in interactive shell
+#set zinit and plugins directory
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
+if [ ! -d $ZINIT_HOME ]; then
+  mkdir -p "$(dirname $ZINIT_HOME)"
+  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
+
+#Source/load zinit
+source "$ZINIT_HOME/zinit.zsh"
+
+#load starship
+eval "$(starship init zsh)"
+
+#zinit plugins
+# zinit light zsh-users/zsh-syntax-highlighting
+# zinit ice wait lucid
+# zinit light zsh-users/zsh-autosuggestions
+# zinit light zsh-users/zsh-completions
+# zinit light Aloxaf/fzf-tab
+#
+# #zinit snippets
+# zinit snippet OMZP::git
+# zinit snippet OMZP::sudo
+# zinit snippet OMZP::command-not-found
+# zinit snippet OMZP::zoxide
+
+zinit wait lucid for \
+  zsh-users/zsh-syntax-highlighting \
+  zsh-users/zsh-autosuggestions \
+  zsh-users/zsh-completions \
+  Aloxaf/fzf-tab \
+  OMZP::git \
+  OMZP::sudo \
+  OMZP::command-not-found \
+  OMZP::zoxide
+
+autoload -Uz compinit && compinit -C
+zinit cdreplay -q
+
+#HISTORY
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+setopt autocd
+setopt interactivecomments
 
 fpath+="$HOME/dotfiles/completions"
-# Uncomment the line below if you want to use Spaceship theme
-#antigen theme mattmc3/zephyr
- 
-# Tell antigen that you're done
-antigen apply
+#Completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' menu no
 
-
-eval "$(starship init zsh)"
+#shell integrations
+eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
-eval "$(uv generate-shell-completion zsh)"
-source <(fzf --zsh)
-# Set aliases
+
+#Aliases
 alias l='eza -lh --icons=auto'
 alias ld='eza -lhD --icons=auto'
 alias ll='eza -lha --icons=auto --sort=name --group-directories-first'
@@ -59,7 +74,6 @@ alias ls='eza -1 --icons=auto'
 alias lt='eza --icons=auto --tree'
 alias cls='clear'
  
-# Add other useful aliases
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias upd='brew update'
 alias upg='brew upgrade'
@@ -72,25 +86,36 @@ alias v='nvim'
 alias rr='cargo run'
 alias ff='nvim $(fzf --preview="bat --theme=Catppuccin\ Mocha --color=always {}")'
 alias icat='kitty +kitten icat'
+#copyfile refuses to work for some reason
+function copyfile {
+  [[ "$#" != 1 ]] && return 1
+  local file_to_copy=$1
+  cat $file_to_copy | pbcopy
+}
 
-#expo bullshits
-alias start='npx expo start'
-
-##I don't know what it does (Completion....... I guess??)
-autoload -Uz compinit && compinit
-
-
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-# bun completions
-[ -s "/Users/saxam/.bun/_bun" ] && source "/Users/saxam/.bun/_bun"
-
-# bun
+#Export basically everything
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:/opt/homebrew/opt/openjdk/bin:/opt/homebrew/Caskroom/flutter/3.29.3/flutter/bin:$HOME/cmdline-tools/bin:/opt/homebrew/opt/rustup/bin:$PATH"
+export BAT_THEME="Catppuccin Mocha"
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+--color=selected-bg:#45475a \
+--multi"
+export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
+export ANDROID_NDK_HOME="/opt/homebrew/share/android-ndk"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export COPYFILE_COPY_CMD=pbcopy
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
 # pokemon-colorscripts on terminal startup
-if [[ -o interactive ]] && [[ -z "$NVIM" ]] && [[ $TERM_PROGRAM != "vscode" ]]; then
-pokemon-colorscripts -r --no-title
-fi
+# if [[ -o interactive ]] && [[ -z "$NVIM$TMUX" ]] && [[ $TERM_PROGRAM != "vscode" ]]; then
+# pokemon-colorscripts -r --no-title
+# fi
