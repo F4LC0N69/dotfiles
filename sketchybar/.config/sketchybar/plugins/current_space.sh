@@ -29,6 +29,11 @@ update_space() {
       ICON_PADDING_LEFT=7
       ICON_PADDING_RIGHT=7
         ;;
+    6)
+      ICON=
+      ICON_PADDING_LEFT=7
+      ICON_PADDING_RIGHT=7
+        ;;
     *)
         ICON=$SPACE_ID
         ICON_PADDING_LEFT=9

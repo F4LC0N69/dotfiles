@@ -17,27 +17,18 @@ source "$ZINIT_HOME/zinit.zsh"
 eval "$(starship init zsh)"
 
 #zinit plugins
-# zinit light zsh-users/zsh-syntax-highlighting
-# zinit ice wait lucid
-# zinit light zsh-users/zsh-autosuggestions
-# zinit light zsh-users/zsh-completions
-# zinit light Aloxaf/fzf-tab
-#
-# #zinit snippets
-# zinit snippet OMZP::git
-# zinit snippet OMZP::sudo
-# zinit snippet OMZP::command-not-found
-# zinit snippet OMZP::zoxide
+zinit light zsh-users/zsh-syntax-highlighting
+zinit ice wait lucid
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
+zinit load zsh-users/zsh-history-substring-search
+zinit light Aloxaf/fzf-tab
 
-zinit wait lucid for \
-  zsh-users/zsh-syntax-highlighting \
-  zsh-users/zsh-autosuggestions \
-  zsh-users/zsh-completions \
-  Aloxaf/fzf-tab \
-  OMZP::git \
-  OMZP::sudo \
-  OMZP::command-not-found \
-  OMZP::zoxide
+#zinit snippets
+zinit snippet OMZP::git
+zinit snippet OMZP::sudo
+zinit snippet OMZP::command-not-found
+zinit snippet OMZP::zoxide
 
 autoload -Uz compinit && compinit -C
 zinit cdreplay -q
@@ -56,6 +47,9 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 setopt autocd
 setopt interactivecomments
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 fpath+="$HOME/dotfiles/completions"
 #Completion styling
@@ -86,6 +80,7 @@ alias v='nvim'
 alias rr='cargo run'
 alias ff='nvim $(fzf --preview="bat --theme=Catppuccin\ Mocha --color=always {}")'
 alias icat='kitty +kitten icat'
+alias dots='cd $HOME/dotfiles'
 #copyfile refuses to work for some reason
 function copyfile {
   [[ "$#" != 1 ]] && return 1
@@ -93,8 +88,24 @@ function copyfile {
   cat $file_to_copy | pbcopy
 }
 
+#path setup
+path=(
+  $path #Keep existing path entry
+  $HOME/dotfiles/scripts
+  $HOME/.local/bin
+  $HOME/.cargo/bin
+  /opt/homebrew/opt/openjdk/bin
+  /opt/homebrew/Caskroom/flutter/3.29.3/flutter/bin
+  $HOME/cmdline-tools/bin
+  /opt/homebrew/opt/rustup/bin
+  )
+
+# Remove non-existent and duplicate entries
+typeset -U path
+path=($^path(N-/))
+
 #Export basically everything
-export PATH="$HOME/.local/bin:$HOME/.cargo/bin:/opt/homebrew/opt/openjdk/bin:/opt/homebrew/Caskroom/flutter/3.29.3/flutter/bin:$HOME/cmdline-tools/bin:/opt/homebrew/opt/rustup/bin:$PATH"
+export path
 export BAT_THEME="Catppuccin Mocha"
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
@@ -107,7 +118,6 @@ export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 export ANDROID_NDK_HOME="/opt/homebrew/share/android-ndk"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-export COPYFILE_COPY_CMD=pbcopy
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
@@ -115,7 +125,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-# pokemon-colorscripts on terminal startup
+ # pokemon-colorscripts on terminal startup
 # if [[ -o interactive ]] && [[ -z "$NVIM$TMUX" ]] && [[ $TERM_PROGRAM != "vscode" ]]; then
 # pokemon-colorscripts -r --no-title
 # fi

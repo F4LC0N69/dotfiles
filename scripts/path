@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# It takes content of $PATH and replaces every : with newline character
+
+echo -e ${PATH//:/\\n}
