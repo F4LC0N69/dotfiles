@@ -81,6 +81,7 @@ alias rr='cargo run'
 alias ff='nvim $(fzf --preview="bat --theme=Catppuccin\ Mocha --color=always {}")'
 alias icat='kitty +kitten icat'
 alias dots='cd $HOME/dotfiles'
+alias cn='cargo new'
 #copyfile refuses to work for some reason
 function copyfile {
   [[ "$#" != 1 ]] && return 1
