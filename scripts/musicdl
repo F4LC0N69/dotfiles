@@ -1,0 +1,41 @@
+#!/bin/bash
+
+SCRIPT_NAME=$(basename "$0")
+MUSIC_DIR="$HOME/Music"
+
+# Check if URL is provided
+if [ -z "$1" ]; then
+  echo "Usage: $SCRIPT_NAME <YouTube-or-Spotify-URL>"
+  exit 1
+fi
+
+URL="$1"
+
+# Function: download from YouTube
+download_youtube() {
+  echo "[🎵] Detected YouTube link. Downloading with yt-dlp..."
+  yt-dlp \
+    -f "bestaudio" \
+    --extract-audio \
+    --audio-format mp3 \
+    --audio-quality 0 \
+    -o "$MUSIC_DIR/%(title)s.%(ext)s" \
+    "$URL"
+}
+
+# Function: download from Spotify
+download_spotify() {
+  echo "[🎧] Detected Spotify link. Downloading with spotdl..."
+  spotdl download "$URL" --output "$MUSIC_DIR"
+}
+
+# Determine platform
+if [[ "$URL" =~ ^https?://(open\.)?spotify\.com ]]; then
+  download_spotify
+elif [[ "$URL" =~ ^https?://(www\.)?(youtube\.com|youtu\.be) ]]; then
+  download_youtube
+else
+  echo "[❌] Unrecognized URL. Please provide a valid Spotify or YouTube link."
+  exit 2
+fi
+

@@ -23,6 +23,8 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 zinit load zsh-users/zsh-history-substring-search
 zinit light Aloxaf/fzf-tab
+zinit ice lucid nocompile
+zinit load MenkeTechnologies/zsh-cargo-completion
 
 #zinit snippets
 zinit snippet OMZP::git
@@ -88,6 +90,13 @@ function copyfile {
   local file_to_copy=$1
   cat $file_to_copy | pbcopy
 }
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
 
 #path setup
 path=(
@@ -123,6 +132,9 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 export NVM_DIR="$HOME/.nvm"
+export EZA_CONFIG_DIR="$HOME/.config/eza"
+export EDITOR="nvim"
+
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 

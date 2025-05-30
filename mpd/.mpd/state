@@ -1,9 +1,9 @@
 sw_volume: 47
 audio_device_state:1:My OS X Device
 state: stop
-current: 16
+current: 19
 random: 0
-repeat: 0
+repeat: 1
 single: 1
 consume: 0
 crossfade: 0
@@ -28,4 +28,11 @@ playlist_begin
 14:Riptide [En_6WWOWh8E].mp3
 15:Gracie Abrams - That’s So True.mp3
 16:Gracie Abrams - That’s So True.mp3
+17:Bloodstream [G0qYOjekhkc].mp3
+18:Gracie Abrams - That’s So True.mp3
+19:Gracie Abrams - That’s So True.mp3
+20:Bloodstream [G0qYOjekhkc].mp3
+21:Gracie Abrams - That’s So True.mp3
+22:Bloodstream [G0qYOjekhkc].mp3
+23:Ed Sheeran - Remember The Name (feat. Eminem & 50 Cent) [Official Lyric Video].mp3
 playlist_end

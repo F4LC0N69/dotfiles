@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "Installing spicetify marketplace..."
+
+curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.sh | sh

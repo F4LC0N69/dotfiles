@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Define the Downloads directory
+DOWNLOAD_DIR="$HOME/Downloads"
+SCRIPT_NAME=$(basename "$0")
+
+# Check if URL is passed
+if [ -z "$1" ]; then
+  echo "Usage: $SCRIPT_NAME <YouTube-URL>"
+  exit 1
+fi
+
+# Download the best quality video+audio to Downloads folder
+yt-dlp -f "bv*+ba/best" -o "$DOWNLOAD_DIR/%(title)s.%(ext)s" "$1"
+

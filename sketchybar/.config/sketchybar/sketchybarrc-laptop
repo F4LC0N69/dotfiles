@@ -8,7 +8,7 @@ PLUGIN_SHARED_DIR="$HOME/.config/sketchybar/plugins"
 SPOTIFY_EVENT="com.spotify.client.PlaybackStateChanged"
 
 sketchybar --bar \
-    height=40 \
+    height=30 \
     color=0x00000000 \
     margin=0 \
     sticky=on \
@@ -25,10 +25,10 @@ sketchybar --default \
     background.corner_radius=5 \
     background.padding_right=5 \
     background.height=26 \
-    icon.font="$FONT_FACE:Medium:25.0" \
+    icon.font="$FONT_FACE:Medium:20.0" \
     icon.padding_left=5 \
     icon.padding_right=5 \
-    label.font="$FONT_FACE:Medium:18.0" \
+    label.font="$FONT_FACE:Medium:15.0" \
     label.color=0xffcad3f5 \
     label.y_offset=0 \
     label.padding_left=0 \
@@ -68,7 +68,7 @@ sketchybar --add item front_app left \
     background.padding_left=-3 \
     icon= \
     icon.color=0xffa6da95 \
-    icon.font="$FONT_FACE:Bold:28.0" \
+    icon.font="$FONT_FACE:Bold:23.0" \
     icon.padding_left=0 \
     icon.padding_right=0 \
     icon.y_offset=1 \

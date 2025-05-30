@@ -4,7 +4,7 @@ return {
 	cmd = "Silicon",
 	config = function()
 		require("nvim-silicon").setup({
-			font = "JetBrainsMonoNerdFontMono=18; Noto Color Emoji=18; Noto Emoji=17", --😆
+			font = "JetBrainsMonoNerdFontMono=18", --😆
 			theme = "/Users/saxam/dotfiles/bat/.config/bat/themes/Catppuccin Mocha.tmTheme",
 			output = function()
 				local timestamp = os.date("%Y-%m-%d_%H-%M-%S")

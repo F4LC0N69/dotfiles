@@ -1,3 +1,6 @@
+[general]
+framerate = 60
+
 [color]
 background = '#1e1e2e'
 

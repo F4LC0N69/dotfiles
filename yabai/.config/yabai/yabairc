@@ -4,7 +4,7 @@ yabai -m config window_placement second_child
 
 #padding
 
-yabai -m config top_padding 7
+yabai -m config top_padding 5
 yabai -m config bottom_padding 7
 yabai -m config left_padding 7
 yabai -m config right_padding 7
