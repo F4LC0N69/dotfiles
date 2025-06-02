@@ -18,6 +18,8 @@ download_youtube() {
     -f "bestaudio" \
     --extract-audio \
     --audio-format mp3 \
+    --embed-metadata \
+    --embed-thumbnail \
     --audio-quality 0 \
     -o "$MUSIC_DIR/%(title)s.%(ext)s" \
     "$URL"
@@ -30,12 +32,12 @@ download_spotify() {
 }
 
 # Determine platform
-if [[ "$URL" =~ ^https?://(open\.)?spotify\.com ]]; then
-  download_spotify
-elif [[ "$URL" =~ ^https?://(www\.)?(youtube\.com|youtu\.be) ]]; then
-  download_youtube
+if [[ "$URL" == https://open.spotify.com* ]]; then
+    download_spotify
+elif [[ "$URL" == https://www.youtube.com* || "$URL" == https://youtu.be* ]]; then
+    download_youtube
 else
-  echo "[❌] Unrecognized URL. Please provide a valid Spotify or YouTube link."
-  exit 2
+    echo "[X] Unrecognized URL. Please provide a valid Spotify or YouTube link."
+    exit 2
 fi
 

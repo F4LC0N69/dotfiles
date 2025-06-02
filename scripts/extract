@@ -1,0 +1,30 @@
+#!/bin/bash
+
+file="$1"
+
+if [[ -z "$file" || ! -f "$file" ]]; then
+    echo "Usage: extract <archive-file>"
+    exit 1
+fi
+
+# Get filename without extension
+filename="$(basename -- "$file")"
+folder="${filename%%.*}"
+
+# Create target directory
+mkdir -p "$folder"
+
+# Extract based on file type
+case "$file" in
+    *.tar.gz|*.tgz)   tar -xvzf "$file" -C "$folder" ;;
+    *.tar.bz2)        tar -xvjf "$file" -C "$folder" ;;
+    *.tar.xz)         tar -xvJf "$file" -C "$folder" ;;
+    *.tar)            tar -xvf "$file" -C "$folder" ;;
+    *.zip)            unzip -q "$file" -d "$folder" ;;
+    *.rar)            unrar x "$file" "$folder" ;;
+    *.7z)             7z x "$file" -o"$folder" ;;
+    *)                echo "Unsupported archive format: $file" ; exit 1 ;;
+esac
+
+echo "Extracted to $folder"
+

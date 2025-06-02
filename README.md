@@ -8,15 +8,18 @@ Dotfiles _*almost*_ based on Catppuccin Mocha colorscheme.
 ```bash
 # MacOS or Linux
 brew install stow
-
+```
+```bash
 # Arch (BTW)
-pacman -S stow
-
+sudo pacman -S stow
+```
+```bash
 #Fedora
-dnf install stow
-
+sudo dnf install stow
+```
+```bash
 #Debian
-apt install stow
+sudo apt install stow
 ```
 
 ### Clone this repo
@@ -27,10 +30,16 @@ git clone https://github.com/F4LC0N69/dotfiles.git && cd dotfiles
 
 ### Simply stow the files you need or copy them if you want to. Eg:-
 
+
 ```bash
 #For zsh config
 stow zsh
+```
+# WARNING!! ⚠️ Read wallpaper script once
 
+#### To enable theme for fast-syntax-highlighting run this once
+
+```bash
+fast-theme XDG:catppuccin-mocha
 
 ```
-Read wallpaper script once

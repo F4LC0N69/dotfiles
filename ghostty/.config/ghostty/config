@@ -1,8 +1,8 @@
 theme = catppuccin-mocha
 
 font-family = "CaskaydiaCove Nerd Font Mono"
-font-size = 20
+font-size = 25
 cursor-style = bar
 
-background-opacity = 0.98
+background-opacity = 0.78
 macos-titlebar-style = hidden

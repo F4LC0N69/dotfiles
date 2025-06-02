@@ -17,6 +17,13 @@ source "$ZINIT_HOME/zinit.zsh"
 eval "$(starship init zsh)"
 
 #zinit plugins
+zinit wait lucid for \
+ atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma-continuum/fast-syntax-highlighting \
+ blockf \
+    zsh-users/zsh-completions \
+ atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
 zinit ice wait lucid
 zinit light zsh-users/zsh-autosuggestions
@@ -57,6 +64,7 @@ fpath+="$HOME/dotfiles/completions"
 #Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu no
+zstyle ':fzf-tab:*' use-fzf-default-opts yes #If something breaks this is probably why.
 
 #shell integrations
 eval "$(fzf --zsh)"
@@ -118,7 +126,6 @@ path=($^path(N-/))
 export path
 export BAT_THEME="Catppuccin Mocha"
 export FZF_DEFAULT_OPTS=" \
---color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
 --color=selected-bg:#45475a \
