@@ -78,11 +78,12 @@ alias ls='eza -1 --icons=auto'
 alias lt='eza --icons=auto --tree'
 alias cls='clear'
  
-alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias upd='brew update'
 alias upg='brew upgrade'
+alias upgg='brew upgrade --greedy'
 alias i='brew install'
 alias c='clear'
+alias clean='brew cleanup --prune=all'
 alias q='exit'
 alias cd='z' 
 alias cat='bat'
@@ -145,7 +146,7 @@ export EDITOR="nvim"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
- # pokemon-colorscripts on terminal startup
-# if [[ -o interactive ]] && [[ -z "$NVIM$TMUX" ]] && [[ $TERM_PROGRAM != "vscode" ]]; then
-# pokemon-colorscripts -r --no-title
-# fi
+##pokemon-colorscripts on terminal startup
+if [[ -o interactive ]] && [[ -z "$NVIM$TMUX" ]] && [[ $TERM_PROGRAM != "vscode" ]]; then
+pokemon-colorscripts -r --no-title
+fi
