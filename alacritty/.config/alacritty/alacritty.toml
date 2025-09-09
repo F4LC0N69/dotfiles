@@ -1,14 +1,15 @@
 [window]
+decorations = "None"
 dimensions = { columns = 120, lines = 30 }
 padding = { x = 10, y = 10 }
 dynamic_title = true
-opacity = 0.7  # 70% transparency
+opacity = 0.6  # 70% transparency
 
 [font]
 normal = { family = "CaskaydiaCove Nerd Font Mono", style = "Regular" }
 bold = { family = "CaskaydiaCove Nerd Font Mono", style = "Bold" }
 italic = { family = "CaskaydiaCove Nerd Font Mono", style = "Italic" }
-size = 11.0
+size = 21.0
 offset = { x = 0, y = 0 }
 
 [colors]
@@ -60,20 +61,4 @@ multiplier = 3
 hide_when_typing = true
 
 [bell]
-animation = "None"
-
-[key_bindings]
-[[key_bindings]]
-key = "V"
-mods = ["Control", "Shift"]
-action = "Paste"
-
-[[key_bindings]]
-key = "C"
-mods = ["Control", "Shift"]
-action = "Copy"
-
-[[key_bindings]]
-key = "Q"
-mods = ["Control", "Shift"]
-action = "Quit"
+animation = "Ease"
