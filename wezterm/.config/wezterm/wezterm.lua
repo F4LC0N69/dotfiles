@@ -11,7 +11,7 @@ config = {
   color_scheme = "Catppuccin Mocha",
   font_size = 24,
   enable_kitty_graphics = true,
-  window_background_opacity = 0.7,
+  window_background_opacity = 1.0,
   macos_window_background_blur = 70,
   font = wezterm.font_with_fallback({
     'CaskaydiaCove NF',
