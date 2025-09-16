@@ -5,8 +5,14 @@
     "keybind" : "l"
 }
 {
+    "label" : "hibernate",
+    "action" : "systemctl hibernate",
+    "text" : "Hibernate",
+    "keybind" : "h"
+}
+{
     "label" : "logout",
-    "action" : "hyprctl dispatch exit",
+    "action" : "loginctl terminate-user $USER",
     "text" : "Logout",
     "keybind" : "e"
 }
@@ -15,6 +21,12 @@
     "action" : "systemctl poweroff",
     "text" : "Shutdown",
     "keybind" : "s"
+}
+{
+    "label" : "suspend",
+    "action" : "systemctl suspend",
+    "text" : "Suspend",
+    "keybind" : "u"
 }
 {
     "label" : "reboot",
