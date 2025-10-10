@@ -26,6 +26,6 @@ shift + alt - 0 : yabai -m window --space 10;
 
 #NOTE:Open applications
 cmd - return : open -a WezTerm
-cmd - b : open -a Thorium
+cmd - b : open -a Brave\ Browser
 cmd - k : open -a VSCodium
 cmd - m : open -a Spotify
