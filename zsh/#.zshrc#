@@ -117,7 +117,6 @@ path=(
   /opt/homebrew/Caskroom/flutter/3.29.3/flutter/bin
   $HOME/cmdline-tools/bin
   /opt/homebrew/opt/rustup/bin
-  $HOME/.cargo/bin
   )
 
 # Remove non-existent and duplicate entries

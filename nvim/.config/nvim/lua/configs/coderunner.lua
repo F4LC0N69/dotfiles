@@ -1,32 +1,43 @@
+-- lua/configs/coderunner.lua
 local M = {}
 
 M.run_code = function()
-	vim.cmd("w") --Save before running
+	-- Save current file
+	vim.cmd("w")
 
+	-- Launch floating terminal
 	require("nvchad.term").toggle({
 		id = "floatTerm",
 		pos = "float",
 		cmd = function()
-			local file = vim.fn.expand("%")
-			local dir = vim.fn.fnamemodify(file, ":h")
-			local post_run = "&& sleep 0.1 && echo 'Press any key to exit' && read -n 1 && exit"
-			local ft_cmds = {
-				python = "python3 " .. file,
-				lua = "lua " .. file,
-				cpp = "clear && g++ -o out " .. file .. "&& ./out",
-				c = "clear && gcc -o out " .. file .. "&& ./out",
-				go = "go run " .. file,
-				rust = "cd " .. vim.fn.shellescape(dir) .. "&& clear && cargo run",
-				zig = "zig run " .. file,
-				java = "javac " .. file .. " && java " .. vim.fn.fnamemodify(file, ":t:r"),
+			local file = vim.fn.expand("%") -- full file path
+			local dir = vim.fn.fnamemodify(file, ":h") -- file directory
+			local ft = vim.bo.ft -- filetype
+
+			-- Post-run: pause and exit
+			local post_run = " && echo '\n[Press any key to exit]' && read -n 1 && exit"
+
+			-- Filetype commands
+			local runners = {
+				python = "clear && python3 " .. file,
+				lua = "clear && lua " .. file,
+				c = "clear && gcc -o out " .. file .. " && ./out",
+				cpp = "clear && g++ -o out " .. file .. " && ./out",
+				go = "clear && go run " .. file,
+				rust = "cd " .. vim.fn.shellescape(dir) .. " && clear && cargo run",
+				zig = "clear && zig run " .. file,
+				java = "clear && javac " .. file .. " && java " .. vim.fn.fnamemodify(file, ":t:r"),
+				javascript = "clear && node " .. file,
+				typescript = "clear && ts-node " .. file,
+				sh = "clear && bash " .. file,
 			}
 
-			local final_cmds = {}
-			for ft, cmd in pairs(ft_cmds) do
-				final_cmds[ft] = cmd .. post_run
+			local cmd = runners[ft]
+			if not cmd then
+				cmd = "echo 'No runner found for filetype: " .. ft .. "'"
 			end
-			return final_cmds[vim.bo.ft]
-				or ("echo 'No runner found for filetype: " .. vim.bo.filetype .. "'" .. post_run)
+
+			return cmd .. post_run
 		end,
 	})
 end
