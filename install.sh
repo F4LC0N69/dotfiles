@@ -8,7 +8,7 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 # ──[ Folders to skip ]──────────────────────────────────────────
-SKIP_DIRS=("scripts" "wallpapers" "brew")
+SKIP_DIRS=("scripts" "wallpapers" "brew" "completions")
 
 # ──[ Helper: check and install Homebrew on macOS ]─────────────
 install_brew() {

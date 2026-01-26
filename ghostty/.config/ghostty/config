@@ -1,9 +1,9 @@
 theme = Catppuccin Mocha
 
-##font-family = "CaskaydiaCove Nerd Font Mono"
-font-family = "JetBrainsMonoNL Nerd Font Mono"
+font-family = "CaskaydiaCove Nerd Font Mono"
+#font-family = "JetBrainsMonoNL Nerd Font Mono"
 font-size = 20
 cursor-style = bar
 
-background-opacity = 1.0
+background-opacity = 0.95
 macos-titlebar-style = hidden

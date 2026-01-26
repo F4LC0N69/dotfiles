@@ -20,6 +20,7 @@ set smartcase         " Case-sensitive if uppercase is used
 set hlsearch          " Highlight search results
 set incsearch         " Incremental search
 set clipboard=unnamedplus " Use system clipboard
+set termguicolors
 
 " Load plugins using vim-plug
 call plug#begin('~/.vim/plugged')

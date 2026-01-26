@@ -27,5 +27,5 @@ shift + alt - 0 : yabai -m window --space 10;
 #NOTE:Open applications
 cmd - return : open -a Ghostty
 cmd - b : open -a Zen
-cmd - k : open -a VSCodium
+cmd - k : open -a Visual\ Studio\ Code
 cmd - m : open -a Spotify
