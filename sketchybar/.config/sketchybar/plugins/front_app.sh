@@ -75,6 +75,10 @@ case $INFO in
   ICON_PADDING_RIGHT=4
   ICON=
   ;;
+"Zen")
+  ICON_PADDING_RIGHT=4
+  ICON=󰈹
+  ;;
 "Ghostty")
   ICON_PADDING_RIGHT=4
   ICON=
