@@ -118,6 +118,7 @@ path=(
   $HOME/cmdline-tools/bin
   /opt/homebrew/opt/rustup/bin
   $HOME/.cargo/bin
+  $HOME/.spicetify/
   )
 
 # Remove non-existent and duplicate entries
@@ -155,3 +156,5 @@ export EDITOR="nvim"
 if [[ -o interactive ]] && [[ -z "$NVIM$TMUX" ]] && [[ $TERM_PROGRAM != "vscode" ]]; then
 pokemon-colorscripts -r --no-title
 fi
+
+export PATH=$PATH:/Users/saxam/.spicetify

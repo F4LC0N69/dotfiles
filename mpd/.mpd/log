@@ -326,3 +326,5 @@
 2025-11-23T17:33:17 player: played "Passenger ｜ Sandstorm (Official Audio).mp3"
 2026-01-30T13:49:06 player: played "Passenger ｜ Sandstorm (Official Audio).mp3"
 2026-02-12T18:19:41 player: played "Passenger ｜ Sandstorm (Official Audio).mp3"
+2026-02-14T23:22:49 exception: Failed to decode "/Users/saxam/Music/Passenger ｜ Sandstorm (Official Audio).mp3"; Failed to open "/Users/saxam/Music/Passenger ｜ Sandstorm (Official Audio).mp3": No such file or directory
+2026-02-14T23:22:49 player: played "Passenger ｜ Sandstorm (Official Audio).mp3"
