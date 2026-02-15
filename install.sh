@@ -87,6 +87,12 @@ for dir in */; do
             ;;
     esac
 done
-
 echo -e "${CYAN}Stow process completed.${NC}"
+
+# ──[ Install Brewfile ]─────────────────────────────────────────
+
+if [[ -f "$HOME/dotfiles/brew/Brewfile" ]]; then
+    echo -e "${CYAN}Running brew bundle install...${NC}"
+    brew bundle install --file="$HOME/dotfiles/brew/Brewfile" --verbose
+fi
 
