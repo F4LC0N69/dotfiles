@@ -1,0 +1,20 @@
+# font_family Jetbrains Nerd Font   sike
+font_size 20 
+
+
+# BEGIN_KITTY_THEME
+# Catppuccin-Mocha
+include cat-mocha.conf
+# END_KITTY_THEME
+
+# BEGIN_KITTY_FONTS
+font_family      family="JetbrainsMonoNL Nerd Font"
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+# END_KITTY_FONTS
+
+hide_window_decorations yes
+disable_ligatures   never
+background_opacity 0.8
+background_blur 150

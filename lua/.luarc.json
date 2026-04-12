@@ -1,0 +1,19 @@
+{
+  "runtime": {
+    "version": "LuaJIT"
+  },
+  "diagnostics": {
+    "globals": ["love"]
+  },
+  "workspace": {
+    "library": [
+      "$VIMRUNTIME",
+      "~/.local/share/love2d-library"
+    ],
+    "checkThirdParty": false
+  },
+  "telemetry": {
+    "enable": false
+  }
+}
+

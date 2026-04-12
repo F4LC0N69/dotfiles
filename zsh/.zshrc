@@ -69,6 +69,7 @@ zstyle ':fzf-tab:*' use-fzf-default-opts yes #If something breaks this is probab
 #shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
+eval $(thefuck --alias)
 
 #Aliases
 alias l='eza -lh --icons=auto'
@@ -138,10 +139,6 @@ export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 export ANDROID_NDK_HOME="/opt/homebrew/share/android-ndk"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-export GOPROXY=https://proxy.golang.org,direct
-export GOSUMDB="sum.golang.org"
-export GOROOT="$(go env GOROOT)"
-export PATH="$GOROOT/bin:$PATH"
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 

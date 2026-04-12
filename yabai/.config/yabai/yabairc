@@ -28,6 +28,7 @@ yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info
 yabai -m rule --add label="Iterm2" app="^Iterm2$" manage=off
 yabai -m rule --add label="iTerm" app="^iTerm$" manage=off
 yabai -m rule --add label="iTerm2" app="^iTerm2$" manage=off
+yabai -m rule --add label="LÖVE" app="LÖVE" manage=off
 yabai -m rule --add label="iTerm" app="iTerm" manage=off
 yabai -m rule --add label="Shottr" app="Shottr" manage=off
 yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off

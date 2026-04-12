@@ -1,39 +1,26 @@
 -- load defaults i.e lua_lsp
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = { "html", "cssls", "ts_ls", "clangd", "zls", "pyright", "asm_lsp", "jdtls" }
+local servers = { "lua-language-server", "html", "cssls", "ts_ls", "clangd", "zls", "pyright", "asm_lsp", "jdtls" }
 vim.lsp.enable(servers)
---local lspconfig = require("lspconfig")
---Added by me. If something isn't working, it's
---probably because of this line below 8=====D
---local util = require "lspconfig/util"
 
--- EXAMPLE
--- note 2 this is where I probably fucked up.
--- local servers = { "html", "cssls", "ts_ls", "clangd", "zls", "pyright", "asm_lsp" }
--- local nvlsp = require("nvchad.configs.lspconfig")
---
--- -- lsps with default config
--- for _, lsp in ipairs(servers) do
--- 	lspconfig[lsp].setup({
--- 		on_attach = nvlsp.on_attach,
--- 		on_init = nvlsp.on_init,
--- 		capabilities = nvlsp.capabilities,
--- 	})
--- end
-
--- configuring single server, example: rust
--- lspconfig.rust_analyzer.setup {
---   on_attach = nvlsp.on_attach,
---   on_init = nvlsp.on_init,
---   capabilities = nvlsp.capabilities,
---   filetypes = { "rust" },
---   root_dir = util.root_pattern "Cargo.toml",
---   settings = {
---     ["rust-analyzer"] = {
---       cargo = {
---         allFeatures = true,
---       },
---     },
---   },
--- }
+-- require("lspconfig").lua_ls.setup({
+-- 	settings = {
+-- 		Lua = {
+-- 			runtime = {
+-- 				version = "LuaJIT",
+-- 			},
+-- 			diagnostics = {
+-- 				globals = { "love" }, -- 🔥 THIS fixes undefined 'love'
+-- 			},
+-- 			workspace = {
+-- 				library = {
+-- 					vim.env.VIMRUNTIME,
+-- 					"~/.local/share/love2d-library",
+-- 				},
+-- 				checkThirdParty = false,
+-- 			},
+-- 			telemetry = { enable = false },
+-- 		},
+-- 	},
+-- })
