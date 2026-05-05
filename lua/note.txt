@@ -1,0 +1,2 @@
+git clone https://github.com/LuaCATS/love2d ~/.local/share/love2d-library
+This is needed to load love definitions. See .luarc.json

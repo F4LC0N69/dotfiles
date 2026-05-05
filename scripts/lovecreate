@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Check if folder name is provided
+if [ -z "$1" ]; then
+    echo "Usage: $0 <folder-name>"
+    exit 1
+fi
+
+FOLDER="$1"
+DOTFILES_LUARC="$HOME/dotfiles/lua/.luarc.json"
+
+# Create folder if it doesn't exist
+mkdir -p "$FOLDER"
+
+# Create main.lua if it doesn't exist
+touch "$FOLDER/main.lua"
+
+# Copy .luarc.json if source exists
+if [ -f "$DOTFILES_LUARC" ]; then
+    cp "$DOTFILES_LUARC" "$FOLDER/.luarc.json"
+else
+    echo "Warning: $DOTFILES_LUARC not found"
+fi
+
+# Open Neovim inside the folder
+cd "$FOLDER" || exit 1
+nvim

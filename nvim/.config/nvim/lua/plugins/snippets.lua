@@ -30,4 +30,15 @@ return {
 			require("luasnip").filetype_extend("sh", { "shelldoc" })
 		end,
 	},
+	{
+		"yorik1984/love2d-snippets",
+		branch = "main", -- default or branch = "11.5" for special API version
+		ft = "lua",
+		dependencies = {
+			"L3MON4D3/LuaSnip",
+		},
+		config = function()
+			require("luasnip.loaders.from_vscode").lazy_load()
+		end,
+	},
 }
