@@ -1,66 +1,155 @@
-tap "felixkratz/formulae"
-tap "koekeishiya/formulae"
+tap "asmvik/formulae", trusted: true
+tap "felixkratz/formulae", trusted: true
+tap "koekeishiya/formulae", "https://github.com/asmvik/homebrew-formulae.git", trusted: true
+tap "thusvill/livewallpaper", trusted: true
+# Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
+brew "btop"
+# Cargo subcommands to build and test all feature flag combinations
 brew "cargo-all-features"
+# Console-based Audio Visualizer for ALSA
 brew "cava"
-brew "sdl2"
-brew "ffmpeg"
-brew "cmake"
-brew "coreutils"
-brew "eza"
-brew "fastfetch"
-brew "fzf"
-brew "git"
-brew "go"
-brew "howdoi"
-brew "lazygit"
-brew "mpc"
-brew "mpd", restart_service: :changed
-brew "ncmpcpp"
-brew "neofetch"
-brew "neovim"
-brew "node"
-brew "nvm"
-brew "pipx"
-brew "rust"
-brew "rustup"
+# Low-level access to audio, keyboard, mouse, joystick, and graphics
 brew "sdl3"
+# SDL2 compatibility layer that uses SDL3 behind the scenes
+brew "sdl2-compat"
+# Play, record, convert, and stream select audio and video codecs
+brew "ffmpeg"
+# Cross-platform make
+brew "cmake"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
+# Modern, maintained replacement for ls
+brew "eza"
+# Like neofetch, but much faster because written mostly in C
+brew "fastfetch"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# Distributed revision control system
+brew "git"
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
+# Instant coding answers via the command-line
+brew "howdoi"
+# Simple terminal UI for git commands
+brew "lazygit"
+# Package manager for the Lua programming language
+brew "luarocks"
+# Command-line music player client for mpd
+brew "mpc"
+# Music Player Daemon
+brew "mpd", restart_service: :changed
+# Text-based modern games
+brew "nbsdgames"
+# Ncurses-based client for the Music Player Daemon
+brew "ncmpcpp"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# POSIX *nix fetch script using Nerdfonts
+brew "nerdfetch"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
+# Manage multiple Node.js versions
+brew "nvm"
+# Execute binaries from Python packages in isolated environments
+brew "pipx"
+# Safe, concurrent, practical language
+brew "rust"
+# Rust toolchain installer
+brew "rustup"
+# Create beautiful image of your source code
 brew "silicon"
+# Command-line tool to customize Spotify client
 brew "spicetify-cli"
+# Cross-shell prompt for astronauts
 brew "starship"
+# Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
+# Very fast implementation of tldr in Rust
+brew "tealdeer"
+# Programmatically correct mistyped console commands
+brew "thefuck"
+# Terminal multiplexer
 brew "tmux"
+# Language for application scale JavaScript development
 brew "typescript"
+# Vi 'workalike' with many additional features
 brew "vim"
+# Terminal-based Tetris clone
+brew "vitetris"
+# Internet file retriever
 brew "wget"
+# JavaScript package manager
 brew "yarn"
+# Blazing fast terminal file manager written in Rust, based on async I/O
 brew "yazi"
+# Feature-rich command-line audio/video downloader
+brew "yt-dlp"
+# Shell extension to navigate your filesystem faster
 brew "zoxide"
+# Custom macOS statusbar with shell plugin, interaction and graph support
 brew "felixkratz/formulae/sketchybar"
+# Simple hotkey-daemon for macOS.
 brew "koekeishiya/formulae/skhd"
+# A tiling window manager for macOS based on binary space partitioning.
 brew "koekeishiya/formulae/yabai"
+# GPU-accelerated terminal emulator
 cask "alacritty"
+# Menu bar tool to limit maximum charging percentage
 cask "aldente"
+# Android SDK component
 cask "android-platform-tools"
+# Installer for BetterDiscord
 cask "betterdiscord-installer"
+# Voice and text chat software
 cask "discord"
 cask "font-cascadia-code-nf"
 cask "font-cascadia-mono-nf"
 cask "font-caskaydia-cove-nerd-font"
 cask "font-hack-nerd-font"
 cask "font-jetbrains-mono-nerd-font"
+# Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Web browser
+cask "google-chrome"
+# Chromium-based web browser
+cask "helium-browser"
+# Utility to hide menu bar items
+cask "hiddenbar"
+# Free and open-source media player
 cask "iina"
+# Tool to prevent the system from going into sleep mode
 cask "keepingyouawake"
+# GPU-based terminal emulator
 cask "kitty"
+# Customise mouse behavior
 cask "linearmouse"
-cask "messenger"
+# Open-source live wallpaper application
+cask "thusvill/livewallpaper/livewallpaper"
+# Open-source cross-platform alternative to AirDrop
+cask "localsend"
+# OpenJDK distribution from Microsoft
 cask "microsoft-openjdk@21"
+# Peer to peer Bitorrent client
+cask "qbittorrent"
+# Control your tools with a few keystrokes
 cask "raycast"
+# Open source virtual/remote desktop application
 cask "rustdesk"
+# Screenshot measurement and annotation tool
 cask "shottr"
+# Music streaming service
 cask "spotify"
+# System monitor for the menu bar
+cask "stats"
+# Video game digital distribution service
 cask "steam"
+# Open-source media center
 cask "stremio"
+# Unpacks archive files
 cask "the-unarchiver"
+# GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm"
+# Gecko based web browser
+cask "zen"

@@ -1,6 +1,7 @@
 #!/bin/bash
 
 SCRIPT_NAME=$(basename "$0")
+# Using the standard ~/Music directory explicitly or falling back to your symlink
 MUSIC_DIR="$HOME/Music"
 
 # Check if URL is provided
@@ -28,16 +29,16 @@ download_youtube() {
 # Function: download from Spotify
 download_spotify() {
   echo "[🎧] Detected Spotify link. Downloading with spotdl..."
-  spotdl download "$URL" --output "$MUSIC_DIR"
+  # spotdl expects the output directory string to map correctly to format template
+  spotdl download "$URL" --output "$MUSIC_DIR/{title} - {artist}.{ext}"
 }
 
-# Determine platform
-if [[ "$URL" == https://open.spotify.com* ]]; then
+# Determine platform using wildcard matching
+if [[ "$URL" == *spotify.com* ]]; then
     download_spotify
-elif [[ "$URL" == https://www.youtube.com* || "$URL" == https://youtu.be* ]]; then
+elif [[ "$URL" == *youtube.com* || "$URL" == *youtu.be* ]]; then
     download_youtube
 else
     echo "[X] Unrecognized URL. Please provide a valid Spotify or YouTube link."
     exit 2
 fi
-
