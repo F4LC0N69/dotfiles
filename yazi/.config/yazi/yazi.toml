@@ -4,7 +4,7 @@ show_symlink = true
 
 [opener]
 play = [
-	{ run = 'mpv "$@"', orphan = true, for = "unix" },
+	{ run = 'open -a IINA "@"', orphan = true, for = "unix" },
 	{ run = '"C:\Program Files\mpv.exe" %*', orphan = true, for = "windows" }
 ]
 edit = [
@@ -21,8 +21,25 @@ rules = [
 	{ mime = "video/*", use = "play" },
 
 	# { mime = "application/json", use = "edit" },
-	{ name = "*.json", use = "edit" },
+	{ url = "*.json", use = "edit" },
 
 	# Multiple openers for a single rule
-	{ name = "*.html", use = [ "open", "edit" ] },
+	{ url = "*.html", use = [ "open", "edit" ] },
 ]
+[plugin]
+prepend_previewers = [
+	{ mime = "image/heic", run = "heic" },
+]
+[[plugin.prepend_fetchers]]
+#id    = "mime" # Remove if Yazi > v26.1.22
+url   = "local://*"
+run   = "mime-ext.local"
+prio  = "high"
+group = "mime"
+
+[[plugin.prepend_fetchers]]
+#id    = "mime" # Remove if Yazi > v26.1.22
+url   = "remote://*"
+run   = "mime-ext.remote"
+prio  = "high"
+group = "mime"

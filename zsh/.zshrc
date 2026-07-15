@@ -116,10 +116,10 @@ path=(
   $HOME/.cargo/bin
   /opt/homebrew/opt/openjdk/bin
   /opt/homebrew/Caskroom/flutter/3.29.3/flutter/bin
+  /opt/homebrew/opt/imagemagick-full/bin
   $HOME/cmdline-tools/bin
   /opt/homebrew/opt/rustup/bin
-  $HOME/.cargo/bin
-  $HOME/.spicetify/
+  $HOME/.spicetify
   )
 
 # Remove non-existent and duplicate entries
