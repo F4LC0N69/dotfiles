@@ -655,3 +655,4 @@ eval "$(zoxide init bash)"
 if [[ "$(tty)" == "/dev/tty1" ]] && [ -f "$HOME/.xinitrc" ] && grep -q "^exec dwm" "$HOME/.xinitrc"; then
     startx
 fi
+. "$HOME/.cargo/env"

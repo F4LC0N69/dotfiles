@@ -39,6 +39,8 @@ zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
 zinit snippet OMZP::zoxide
 
+fpath+="$HOME/dotfiles/completions"
+
 autoload -Uz compinit && compinit -C
 zinit cdreplay -q
 
@@ -60,7 +62,6 @@ setopt interactivecomments
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-fpath+="$HOME/dotfiles/completions"
 #Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu no
@@ -94,11 +95,27 @@ alias ff='nvim $(fzf --preview="bat --theme=Catppuccin\ Mocha --color=always {}"
 alias icat='kitty +kitten icat'
 alias dots='cd $HOME/dotfiles'
 alias cn='cargo new'
+alias dx='$HOME/.cargo/bin/dx'
+alias m='musicdl'
 #copyfile refuses to work for some reason
 function copyfile {
-  [[ "$#" != 1 ]] && return 1
-  local file_to_copy=$1
-  cat $file_to_copy | pbcopy
+  emulate -L zsh
+
+  if [[ -z "$1" ]]; then
+    echo "Usage: copyfile <file>"
+    return 1
+  fi
+
+  if [[ ! -f "$1" ]] || [[ ! -r "$1" ]]; then
+    echo "Error: '$1' is not a valid or readable file."
+    return 1
+  fi
+
+  # Uses raw file redirection to bypass aliases and copy clean data
+  pbcopy < "$1"
+  
+  # Outputs confirmation with the filename bolded
+  echo ${(%):-"%B$1%b copied to clipboard."}
 }
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
