@@ -3,12 +3,13 @@ return {
 	lazy = true,
 	cmd = "Silicon",
 	config = function()
+		local home = os.getenv("HOME")
 		require("nvim-silicon").setup({
-			font = "JetBrainsMonoNerdFontMono=18", --😆
-			theme = "/Users/saxam/dotfiles/bat/.config/bat/themes/Catppuccin Mocha.tmTheme",
+			font = "CaskaydiaCoveNerdFont=20",
+			theme = home .. "/dotfiles/bat/.config/bat/themes/catppuccin-mocha.tmtheme",
 			output = function()
 				local timestamp = os.date("%Y-%m-%d_%H-%M-%S")
-				return string.format("/Users/saxam/Pictures/Codesnaps/snap_%s.png", timestamp)
+				return string.format("%s/Pictures/Codesnaps/snap_%s.png", home, timestamp)
 			end,
 			background = "#1e1e2e",
 			window_title = function()
@@ -18,4 +19,3 @@ return {
 		})
 	end,
 }
---😎

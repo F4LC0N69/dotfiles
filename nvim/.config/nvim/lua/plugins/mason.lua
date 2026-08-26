@@ -14,6 +14,8 @@ return {
 			"mypy",
 			"debugpy",
 			"gopls",
+			"rust-analyzer",
+			"html-lsp",
 		},
 	},
 	{
