@@ -3,8 +3,8 @@ font_size 20
 
 
 # BEGIN_KITTY_THEME
-# Catppuccin-Mocha
-include cat-mocha.conf
+# Rosé Pine Moon
+include current-theme.conf
 # END_KITTY_THEME
 
 # BEGIN_KITTY_FONTS
