@@ -29,6 +29,7 @@ M.run_code = function()
 				java = "clear && javac " .. file .. " && java " .. vim.fn.fnamemodify(file, ":t:r"),
 				javascript = "clear && node " .. file,
 				typescript = "clear && ts-node " .. file,
+				odin = "cd " .. vim.fn.shellescape(dir) .. " && clear && odin run .",
 				sh = "clear && bash " .. file,
 			}
 

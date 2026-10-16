@@ -1,2 +1,4 @@
+**/lazy-lock.json
+# macOS metadata
 .DS_Store
-nvim/.config/nvim/lazy-lock.json
+**/ .DS_Store

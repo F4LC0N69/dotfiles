@@ -46,6 +46,12 @@ map({ "n", "t" }, "<F3>", function()
 	require("nvchad.term").toggle({ pos = "float", id = "floatTerm" })
 end, { noremap = true, silent = true, desc = "Floating terminal" })
 
+--Code snippet
 map("v", "<leader>sc", "<cmd>lua require'nvim-silicon'.clip()<CR>", { desc = "Copy code screenshot to clipboard" })
 map("v", "<leader>sf", "<cmd>lua require'nvim-silicon'.file()<CR>", { desc = "Save code screenshot as file" })
 map("v", "<leader>ss", "<cmd>lua require'nvim-silicon'.shoot()<CR>", { desc = "Create code screenshot." })
+
+--code actions
+map("n", "<leader>ca", function()
+	vim.lsp.buf.code_action()
+end, { desc = "Code actions" })

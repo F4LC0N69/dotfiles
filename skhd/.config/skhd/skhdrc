@@ -26,6 +26,6 @@ shift + alt - 0 : yabai -m window --space 10;
 
 #NOTE:Open applications
 cmd - return : open -a kitty
-cmd - b : open -a Safari
-cmd - k : open -a Visual\ Studio\ Code
+cmd - b : open -a Firefox
+cmd - l : open -a Sidex
 cmd - m : open -a Spotify
