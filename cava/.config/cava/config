@@ -1,6 +1,10 @@
 [general]
 framerate = 60
 
+[input]
+method = coreaudio
+source = tap
+
 [color]
 background = '#1e1e2e'
 
