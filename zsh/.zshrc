@@ -71,6 +71,7 @@ zstyle ':fzf-tab:*' use-fzf-default-opts yes #If something breaks this is probab
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
 eval $(thefuck --alias)
+eval "$(fnm env --use-on-cd)"
 
 #Aliases
 alias l='eza -lh --icons=auto'
@@ -159,13 +160,14 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
-export NVM_DIR="$HOME/.nvm"
+##export NVM_DIR="$HOME/.nvm"
 export EZA_CONFIG_DIR="$HOME/.config/eza"
 export EDITOR="nvim"
 
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+##[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+##[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
+chpwd() ls
 ##pokemon-colorscripts on terminal startup
 if [[ -o interactive ]] && [[ -z "$NVIM$TMUX" ]] && [[ $TERM_PROGRAM != "vscode" ]]; then
 pokemon-colorscripts -r --no-title
