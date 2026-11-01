@@ -126,6 +126,26 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+function codesnap() {
+    local home="${HOME}"
+    local timestamp=$(date "+%Y-%m-%d_%H-%M-%S")
+    local output="${home}/Pictures/Codesnaps/snap_${timestamp}.png"
+    local title=$(basename "$1")
+    
+    mkdir -p "${home}/Pictures/Codesnaps"
+    
+    silicon "$1" \
+        --font "CaskaydiaCove Nerd Font" \
+        --theme "${home}/.config/bat/themes/catppuccin-mocha.tmtheme" \
+        --background "#1e1e2e" \
+        --window-title "$title" \
+        --shadow-blur-radius 30 \
+        --shadow-color "#00000070" \
+        --shadow-offset-y 10\
+        -o "$output" \
+        -c
+}
+
 #path setup
 path=(
   $path #Keep existing path entry
