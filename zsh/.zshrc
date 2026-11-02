@@ -188,9 +188,9 @@ export EDITOR="nvim"
 ##[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 chpwd() ls
-##pokemon-colorscripts on terminal startup
+##pokemon-go-colorscripts on terminal startup
 if [[ -o interactive ]] && [[ -z "$NVIM$TMUX" ]] && [[ $TERM_PROGRAM != "vscode" ]]; then
-pokemon-colorscripts -r --no-title
+pokemon-go-colorscripts -r --no-title
 fi
 
 export PATH=$PATH:/Users/saxam/.spicetify

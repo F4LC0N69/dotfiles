@@ -1,6 +1,5 @@
 tap "asmvik/formulae", trusted: true
 tap "felixkratz/formulae", trusted: true
-tap "koekeishiya/formulae", "https://github.com/asmvik/homebrew-formulae.git", trusted: true
 tap "thusvill/livewallpaper", trusted: true
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
@@ -8,6 +7,8 @@ brew "bat"
 brew "btop"
 # Cargo subcommands to build and test all feature flag combinations
 brew "cargo-all-features"
+# Binary installation for rust projects
+brew "cargo-binstall"
 # Console-based Audio Visualizer for ALSA
 brew "cava"
 # Low-level access to audio, keyboard, mouse, joystick, and graphics
@@ -24,6 +25,8 @@ brew "coreutils"
 brew "eza"
 # Like neofetch, but much faster because written mostly in C
 brew "fastfetch"
+# Fast and simple Node.js version manager
+brew "fnm"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Distributed revision control system
@@ -54,10 +57,8 @@ brew "node"
 brew "nvm"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
-# Safe, concurrent, practical language
-brew "rust"
-# Rust toolchain installer
-brew "rustup"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
 # Create beautiful image of your source code
 brew "silicon"
 # Command-line tool to customize Spotify client
@@ -72,6 +73,8 @@ brew "tealdeer"
 brew "thefuck"
 # Terminal multiplexer
 brew "tmux"
+# Parser generator tool
+brew "tree-sitter-cli"
 # Language for application scale JavaScript development
 brew "typescript"
 # Vi 'workalike' with many additional features
@@ -88,25 +91,29 @@ brew "yazi"
 brew "yt-dlp"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
-# Custom macOS statusbar with shell plugin, interaction and graph support
-brew "felixkratz/formulae/sketchybar"
 # Simple hotkey-daemon for macOS.
-brew "koekeishiya/formulae/skhd"
+brew "asmvik/formulae/skhd", trusted: true
 # A tiling window manager for macOS based on binary space partitioning.
-brew "koekeishiya/formulae/yabai"
-# GPU-accelerated terminal emulator
-cask "alacritty"
+brew "asmvik/formulae/yabai", trusted: true
+# A window border system for macOS
+brew "felixkratz/formulae/borders"
+# Custom macOS statusbar with shell plugin, interaction and graph support
+brew "felixkratz/formulae/sketchybar", trusted: true
 # Menu bar tool to limit maximum charging percentage
 cask "aldente"
 # Android SDK component
 cask "android-platform-tools"
-# Installer for BetterDiscord
-cask "betterdiscord-installer"
 # Voice and text chat software
 cask "discord"
+# Web browser
+cask "firefox"
+cask "font-cascadia-code"
 cask "font-cascadia-code-nf"
+cask "font-cascadia-mono"
 cask "font-cascadia-mono-nf"
+cask "font-cascadia-mono-pl"
 cask "font-caskaydia-cove-nerd-font"
+cask "font-caskaydia-mono-nerd-font"
 cask "font-hack-nerd-font"
 cask "font-jetbrains-mono-nerd-font"
 # Terminal emulator that uses platform-native UI and GPU acceleration
@@ -125,14 +132,12 @@ cask "keepingyouawake"
 cask "kitty"
 # Customise mouse behavior
 cask "linearmouse"
-# Open-source live wallpaper application
-cask "thusvill/livewallpaper/livewallpaper"
+# Animated desktop wallpapers
+cask "thusvill/livewallpaper/livewallpaper", trusted: true
 # Open-source cross-platform alternative to AirDrop
 cask "localsend"
 # OpenJDK distribution from Microsoft
 cask "microsoft-openjdk@21"
-# Peer to peer Bitorrent client
-cask "qbittorrent"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Open source virtual/remote desktop application
@@ -151,5 +156,9 @@ cask "stremio"
 cask "the-unarchiver"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm"
+# Native desktop client for WhatsApp
+cask "whatsapp"
 # Gecko based web browser
 cask "zen"
+go "github.com/scottmckendry/pokemon-go-colorscripts"
+cargo "dioxus-cli"

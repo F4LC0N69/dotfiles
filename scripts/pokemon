@@ -1,0 +1,21 @@
+##!/usr/bin/env bash
+set -e
+
+echo "Cloning repository..."
+git clone https://github.com/scottmckendry/pokemon-go-colorscripts --recurse-submodules
+cd pokemon-go-colorscripts
+
+echo "Building and installing via Go..."
+go install .
+
+# Return to parent directory
+cd ..
+
+echo "Setting up symlink..."
+mkdir -p ~/.local/bin
+ln -sf ~/go/bin/pokemon-go-colorscripts ~/.local/bin/pokemon-go-colorscripts
+
+echo "Cleaning up source directory..."
+rm -rf pokemon-go-colorscripts
+
+echo "Done! pokemon-go-colorscripts is installed and ready."
